@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venue Booking</title>
+
+<style>
+body {
+    font-family: system-ui;
+    background: #0b1220;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 420px;
+    background: rgba(15, 23, 42, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #1f2937;
+    background: #0b1220;
+    color: white;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #4f46e5;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4338ca;
+}
+
+.result {
+    margin-top: 15px;
+    padding: 10px;
+    background: #111827;
+    border-radius: 8px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Venue Booking</h2>
+
+<form action="process.php" method="POST">
+
+    <label>Venue Name</label>
+    <input type="text" name="venue" required>
+
+    <label>Payment Type</label>
+    <select name="payment_type">
+        <option>Full Payment</option>
+        <option>Down Payment</option>
+        <option>Installment</option>
+    </select>
+
+    <label>Payment Method</label>
+    <select name="payment_method">
+        <option>Cash</option>
+        <option>GCash</option>
+        <option>Bank Transfer</option>
+    </select>
+
+    <label>Amount</label>
+    <input type="number" name="amount" required>
+
+    <label>Due Date</label>
+    <input type="date" name="due_date">
+
+    <button type="submit">Confirm Booking</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

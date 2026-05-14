@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Venues Cavite</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, sans-serif;
+}
+
+body {
+    background: url("wedding-bg.jpg") center/cover no-repeat fixed;
+    color: #e5e7eb;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(11,18,32,0.78);
+    backdrop-filter: blur(6px);
+    z-index: -1;
+}
+
+.header {
+    padding: 22px 60px;
+    background: rgba(10,15,25,0.6);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #1f2937;
+}
+
+.container {
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.venue {
+    display: flex;
+    gap: 30px;
+    background: rgba(15,23,42,0.75);
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 22px;
+    backdrop-filter: blur(12px);
+}
+
+.image-box { width: 42%; }
+.main-img { width: 100%; height: 270px; object-fit: cover; border-radius: 12px; }
+
+.details { width: 58%; display: flex; flex-direction: column; gap: 8px; }
+
+button {
+    margin-top: 12px;
+    padding: 12px;
+    border: none;
+    background: #4f46e5;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    width: 420px;
+    background: #0f172a;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, select, textarea {
+    padding: 10px;
+    background: #0b1220;
+    border: 1px solid #1f2937;
+    color: white;
+    border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">Wedding Venues</header>
+
+<section class="container">
+
+<div class="venue">
+    <div class="image-box"><img class="main-img" src="hill.jpg"></div>
+    <div class="details">
+        <h2>Hillcreek Gardens</h2>
+        <p>Tagaytay</p>
+        <p>₱45,000</p>
+        <button onclick="openModal('Wedding')">Book Now</button>
+    </div>
+</div>
+
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<h3 id="title"></h3>
+
+<input type="number" placeholder="Guests">
+<select><option>Standard</option><option>Premium</option></select>
+<input type="date">
+<textarea placeholder="Package Items"></textarea>
+<select><option>Buffet</option><option>Plated</option></select>
+<textarea placeholder="Amenities"></textarea>
+
+<button>Confirm</button>
+</div>
+</div>
+
+<script>
+function openModal(type){
+    document.getElementById("modal").style.display="flex";
+    document.getElementById("title").innerText = "Book " + type;
+}
+
+window.onclick = e => {
+    if(e.target.id === "modal"){
+        document.getElementById("modal").style.display="none";
+    }
+}
+</script>
+
+</body>
+</html>

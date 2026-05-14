@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conference Rooms - Cavite</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, sans-serif;
+}
+
+body {
+    background: #0b1220;
+    color: #e5e7eb;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("bg.jpg") center/cover no-repeat fixed;
+    filter: blur(6px);
+    opacity: 0.25;
+    z-index: -1;
+}
+
+.header {
+    padding: 22px 60px;
+    font-size: 18px;
+    font-weight: 600;
+    background: rgba(10, 15, 25, 0.6);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid #1f2937;
+}
+
+.container {
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.venue {
+    display: flex;
+    gap: 30px;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 22px;
+    backdrop-filter: blur(12px);
+    transition: 0.25s ease;
+}
+
+.venue:hover {
+    transform: translateY(-3px);
+    border-color: #334155;
+}
+
+.image-box {
+    width: 42%;
+}
+
+.main-img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.details {
+    width: 58%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.details h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.details p {
+    font-size: 13px;
+    color: #cbd5e1;
+}
+
+button {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border: none;
+    background: #4f46e5;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    width: fit-content;
+}
+
+button:hover {
+    background: #4338ca;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    width: 420px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid #1f2937;
+    padding: 20px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+input,
+select,
+textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #1f2937;
+    background: #0b1220;
+    color: white;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+    height: 70px;
+}
+
+.modal-content button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #4f46e5;
+    color: white;
+    cursor: pointer;
+}
+
+.close {
+    align-self: flex-end;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+    VenueBook Cavite — Conference Rooms
+</header>
+
+<section class="container">
+
+    <div class="venue">
+        <div class="image-box">
+            <img class="main-img" src="sr.jpg">
+        </div>
+        <div class="details">
+            <h2>Summit Ridge Conference Hall</h2>
+            <p>Tagaytay, Cavite</p>
+            <p>Capacity: 120</p>
+            <p>Price: ₱20,000</p>
+            <p>Rating: ★ 4.6</p>
+            <button onclick="openModal()">Book Now</button>
+        </div>
+    </div>
+
+    <div class="venue">
+        <div class="image-box">
+            <img class="main-img" src="c2.jpg">
+        </div>
+        <div class="details">
+            <h2>The Bayleaf Function Room</h2>
+            <p>General Trias, Cavite</p>
+            <p>Capacity: 100</p>
+            <p>Price: ₱18,000</p>
+            <p>Rating: ★ 4.5</p>
+            <button onclick="openModal()">Book Now</button>
+        </div>
+    </div>
+
+    <div class="venue">
+        <div class="image-box">
+            <img class="main-img" src="c3.jpg">
+        </div>
+        <div class="details">
+            <h2>Microtel Meeting Room</h2>
+            <p>Tagaytay, Cavite</p>
+            <p>Capacity: 80</p>
+            <p>Price: ₱15,000</p>
+            <p>Rating: ★ 4.4</p>
+            <button onclick="openModal()">Book Now</button>
+        </div>
+    </div>
+
+</section>
+
+<!-- MODAL -->
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <h3>Conference Booking Form</h3>
+
+        <label>Booking Package</label>
+        <select>
+            <option>Standard</option>
+            <option>Business</option>
+            <option>Premium</option>
+        </select>
+
+        <label>Number of Attendees</label>
+        <input type="number">
+
+        <label>Schedule Date</label>
+        <input type="date">
+
+        <label>Equipment Setup</label>
+        <textarea placeholder="Projector, Mic, Sound System"></textarea>
+
+        <label>Catering Option</label>
+        <select>
+            <option>None</option>
+            <option>Coffee Break</option>
+            <option>Buffet</option>
+        </select>
+
+        <label>Venue Requirements</label>
+        <textarea placeholder="WiFi, Aircon, Parking"></textarea>
+
+        <button>Confirm Booking</button>
+
+    </div>
+</div>
+
+<script>
+function openModal(){
+    document.getElementById("bookingModal").style.display = "flex";
+}
+
+function closeModal(){
+    document.getElementById("bookingModal").style.display = "none";
+}
+
+window.onclick = function(e){
+    if(e.target.id === "bookingModal"){
+        closeModal();
+    }
+}
+</script>
+
+</body>
+</html>
